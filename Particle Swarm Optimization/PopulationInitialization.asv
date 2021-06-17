@@ -1,24 +1,17 @@
 %Population Initialization
-
-%% Function
-% The next line sets the function input and output variables.
 function [ particle ] = PopulationInitialization( pop_size )
-%% Parameters
 
-%Solution Research Bounds
+%Bounds
 lb = -100; %Lower Bound
 up = 100; %Upper Bound
 
-%Initial Best Global Cost
-Global.BestCost = [-1*inf]; %For minimization = inf, for maximization = -1*inf
 
+Global.BestCost = [-1*inf]; %For minimization = inf, for maximization = -1*inf
 %% For loop 
-% The next for loop will go through each one of the particles in the
-% population.
+% The next for loop will go through each on of the particles fr
 for i=1:pop_size
     
     %% Initial Position
-    %Set the first positionX of a particle i as a random single number;
     particle(i).Position1 = unifrnd(lb, up, 1);
     particle(i).Position2 = unifrnd(lb, up, 1);
     particle(i).Position3 = unifrnd(lb, up, 1);
@@ -72,7 +65,7 @@ for i=1:pop_size
     %Best Cost
     particle(i).BestCost = particle(i).Cost;
     
-    if particle(i).BestCost < 100
+    if particle(i).BestCost < Inf
        Global.BestCost = particle(i).BestCost;
     end 
     

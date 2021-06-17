@@ -6,7 +6,7 @@ function [ particle ] = GlobalBestUpdate( pop_size, particle, Global)
         %% Conditional IF
         %Update Global Best
         if particle(i).Cost<Global.BestCost
-            Global.BestCost = particle(i).BestCost;
+            Global.Best = particle(i).BestCost;
         end
     end
 end

@@ -40,7 +40,7 @@ figure(1)
 hold on
 grid on
 markers = ['o','+','*','.','x','s','d','^','p','h'];
-colors = ['r','g','b','c','m','y','k','w','r','g'];
+colors = ['r','g','b','c','m','y','k','w','#D95319','#A2142F']
 for i=1:cycles
     fprintf('Cycle %d \n',i)
     for j=1:pop_size
@@ -51,13 +51,14 @@ for i=1:cycles
        [particle] = ParticleCostUpdate( pop_size, particle );
        
        %sz = 25;
-%        scatter(j,particle(j).BestCost,...
-%            colors(i),...
-%            markers(i),...
-%            'filled')
-%        drawnow
+       scatter(j,particle(j).BestCost,...
+           sz,...
+           markers(i),...
+           'filled',...
+           )
+       drawnow
        
-       fprintf('Current cost of particle %d = %f\n',j,Global.BestCost)
+       fprintf('Current cost of particle %d = %f\n',j,particle(j).Cost)
        fprintf('Current best cost of particle %d = %f\n',j,particle(j).BestCost)
        fprintf('\n')
     end
