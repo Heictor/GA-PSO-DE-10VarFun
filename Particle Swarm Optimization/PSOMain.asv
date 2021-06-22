@@ -2,8 +2,8 @@ close all;
 clear all;
 clc;
 
-rng default;
-tStart = cputime;
+%rng default;
+
 
 pop_size = 100; %Population Size
 cycles = 10; %Quantity of cicles (iterations)
@@ -51,31 +51,25 @@ for i=1:cycles
        [particle] = PersonalBestUpdate( pop_size, particle );
        [particle] = GlobalBestUpdate( pop_size, particle, Global );
        [particle] = ParticleCostUpdate( pop_size, particle );
-       p = [p ; [particle(j).BestCost]]
        
        
        
-%        fprintf('Current cost of particle %d = %f\n',j,Global.BestCost)
-%        fprintf('Current best cost of particle %d = %f\n',j,particle(j).BestCost)
-%        fprintf('\n')
+       
+       fprintf('Current cost of particle %d = %f\n',j,Global.BestCost)
+       fprintf('Current best cost of particle %d = %f\n',j,particle(j).BestCost)
+       fprintf('\n')
     end
-
-
+p = (particle(:).BestCost, 
 end
-% 
+
 sz = 25;
-aux = 1:1:1000;
-c = linspace(1,length(p),length(aux));
-scatter(aux,p,...
-sz,...
-c,...
-'filled')
-legend('Partículas')
-xlabel('Partículas')
-ylabel('Fitness')
+aux = 1:1:500;
+scatter(aux,[particle(:).BestCost])
+%colors(i),...
+%markers(i),...
+%'filled')
 drawnow
 %hold off
-tEnd = cputime - tStart
 
 
 

@@ -1,6 +1,9 @@
 close all;
 clear all;
 clc;
+tStart = cputime;
+rng default;
+
 options = differentialEvolution;
 
 % change to specify maximum number of iterations
@@ -35,3 +38,4 @@ options.func_eval = -1;
 options.fitness_func = 'objective_func';
 
 ret_val = differentialEvolution(options);
+tEnd = cputime - tStart

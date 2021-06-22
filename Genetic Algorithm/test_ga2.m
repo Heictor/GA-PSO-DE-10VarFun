@@ -3,6 +3,7 @@ close all;
 clear all;
 %5 populações diferentes
 % format long
+tStart = cputime;
 rng default
 
 [best_fitness ,...
@@ -27,7 +28,7 @@ rng default
     100 ,... %Tamanho da população
     20,... %Número de pais que permanecerão na próxima geração
     0.01 ,... %Taxa de Mutação
-    500,... %Máximo de Gerações
+    10,... %Máximo de Gerações
     1.0e-6... %Custo minímo de evolução
 );
 
@@ -42,13 +43,15 @@ rng default
 %% Gráfico para os valores e Fitness ao longo das gerações
 figure(2)
 hold on
-gera = 1:1:length(best_fitness);
-sz = 25;
-c = linspace(1,length(best_fitness),length(gera));
-scatter(gera, best_fitness,sz,c,'filled')
+gera = 1:1:length(population_fitness);
+sz = 15;
+c = linspace(1,length(population_fitness),length(gera));
+scatter(gera, population_fitness,sz,c,'filled')
 %scatter(gera, best_fitness)
-title('Fitness dos indivíduos')
-legend('Valores de Aptidão')
+title('Fitness dos indivíduos no AG')
+legend('Indivíduos')
+xlabel('Indivíduos')
+ylabel('Fitness')
 grid on
 hold off
 % 
@@ -278,5 +281,6 @@ hold off
 % grid on
 % hold off
 
+tEnd = cputime - tStart
 
 

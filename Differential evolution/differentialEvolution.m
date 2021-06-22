@@ -3,6 +3,7 @@ function ret_val = differentialEvolution(options)
     
     figure(1)
     grid on
+    title('Valores de Fitness na ED')
     
 	if nargin == 0
 		options.max_iteration = 1000;
@@ -144,9 +145,13 @@ function ret_val = differentialEvolution(options)
     hold on
     
     it = 1:1:1000;
+    
     c = 1:length(it);
     scatter(it,list_best_fitness,15,c);
-    colormap(gca,'winter')
+    legend('Elementos')
+    xlabel('Elementos')
+    ylabel('FItness')
+    %colormap(gca,'winter')
     drawnow;
     
 	val.population = population;
